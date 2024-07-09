@@ -1,0 +1,9 @@
+version: '3.4'
+
+services:
+  digitization:
+    environment:
+      - ASPNETCORE_ENVIRONMENT=Development
+      - ASPNETCORE_URLS=http://+:80
+    ports:
+      - 5005:80

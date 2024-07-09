@@ -1,0 +1,99 @@
+﻿@model digitization.ViewModels.OrdersModifyViewModel
+
+@{
+    ViewData["Title"] = "Create";
+}
+
+<div class="card md-2">
+    <form asp-action="Create" enctype="multipart/form-data">
+        <h3 class="card-header local-header grid-text " style="display: flex; justify-content: space-between;">
+            Заказы
+            <input type="submit" value="Сохранить" class="btn btn-primary" style="margin-right:10px" />
+        </h3>
+    
+        <div class="card-body local-body">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="row form-group">
+                <div class="col">
+                    <label asp-for="ClientFIO" class="control-label"></label>
+                    <input asp-for="ClientFIO" class="form-control" />
+                    <span asp-validation-for="ClientFIO" class="text-danger"></span>
+                </div>
+                <div class="col">
+                    <label asp-for="ClientPhoneNumber" class="control-label"></label>
+                    <input asp-for="ClientPhoneNumber" class="form-control" />
+                    <span asp-validation-for="ClientPhoneNumber" class="text-danger"></span>
+                </div>
+            </div>
+
+            <div class="row form-group">
+                <div class="col">
+                    <label asp-for="CarBrand" class="control-label"></label>
+                    <input asp-for="CarBrand" class="form-control" />
+                    <span asp-validation-for="CarBrand" class="text-danger"></span>
+                </div>
+                <div class="col">
+                    <label asp-for="CarModel" class="control-label"></label>
+                    <input asp-for="CarModel" class="form-control" />
+                    <span asp-validation-for="CarModel" class="text-danger"></span>
+                </div>
+            </div>
+
+            <div class="row form-group">
+                <div class="col">
+                    <label asp-for="RepairInstructions" class="control-label"></label>
+                    <textarea asp-for="RepairInstructions" class="form-control"></textarea>
+                    <span asp-validation-for="RepairInstructions" class="text-danger"></span>
+                </div>
+            </div>
+
+            <div class="row form-group">
+                <div class="col">
+                    <label asp-for="Price" class="control-label"></label>
+                    <input type="number" step="any" asp-for="Price" class="form-control" />
+                    <span asp-validation-for="Price" class="text-danger"></span>
+                </div>
+                <div class="col">
+                    <label asp-for="MechanicId" class="control-label"></label>
+                    <select asp-for="MechanicId" class="form-control" asp-items="ViewBag.MechanicId"></select>
+                </div>
+                <div class="col">
+                    <label asp-for="AutoElectricianId" class="control-label"></label>
+                    <select asp-for="AutoElectricianId" class="form-control" asp-items="ViewBag.AutoElectricianId"></select>
+                </div>
+            </div>
+
+            <div class="row form-group">
+                <div class="col">
+                    <label asp-for="WalkerId" class="control-label"></label>
+                    <select asp-for="WalkerId" class="form-control" asp-items="ViewBag.WalkerId"></select>
+                </div>
+                <div class="col">
+                    <label asp-for="PainterId" class="control-label"></label>
+                    <select asp-for="PainterId" class="form-control" asp-items="ViewBag.PainterId"></select>
+                </div>
+                <div class="col">
+                    <label asp-for="MotoristId" class="control-label"></label>
+                    <select asp-for="MotoristId" class="form-control" asp-items="ViewBag.MotoristId"></select>
+                </div>
+            </div>
+
+            <div class="w-100">
+                <span asp-validation-for="IsExecutorSelected" class="text-danger" style="margin: 35%;"></span>
+            </div>
+
+            <div class="row form-group">
+                <div class="col">
+                    <label asp-for="Comment" class="control-label"></label>
+                    <textarea asp-for="Comment" class="form-control"></textarea>
+                    <span asp-validation-for="Comment" class="text-danger"></span>
+                </div>
+            </div>
+        </div>
+    </form>
+</div>
+
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

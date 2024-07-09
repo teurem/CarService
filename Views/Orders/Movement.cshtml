@@ -1,0 +1,51 @@
+﻿@model digitization.ViewModels.MovementViewModel
+@{
+    ViewData["Title"] = "Movement";
+}
+
+<div class="card md-2">
+
+    <div class="card-header bg-white d-flex align-items-center justify-content-between mt-2">
+        <h4>Обработать документ</h4>
+    </div>
+
+    <form asp-controller="Orders" asp-action="Movement">
+        <div class="card-body">
+            <div class="row form-group">
+                @if(Model.IsAdmin)
+                {
+                    <div class="col">
+                        <label asp-for="User" class="w-100 control-label"></label>
+                        <select asp-for="UserId" class="form-control" asp-items="ViewBag.ExecutorsId"></select>
+                    </div>
+                }
+                else
+                {
+                    <div class="col">
+                        <label asp-for="User" class="w-100 control-label"></label>
+                        <input asp-for="User" class="form-control" readonly />
+                    </div>
+                }
+            </div>
+            <div class="row form-group">
+                @if (Model.IsAddSpareParts)
+                {
+                    <div class="col">
+                        <label asp-for="SpareParts" class="w-100 control-label"></label>
+                        <textarea asp-for="SpareParts" class="form-control"></textarea>
+                    </div>
+                }
+            </div>
+
+            <input asp-for="UserId" type="hidden" />
+            <input asp-for="EntityId" type="hidden" />
+            <input asp-for="RoadMapId" type="hidden" />
+            <input asp-for="IsAddSpareParts" type="hidden" />
+
+            <div class="row mt-3 mr-0 mb-3 float-right">
+                <input type="submit" value="Подтвердить" class="btn btn-primary " />
+            </div>
+        </div>
+    </form>
+
+</div>

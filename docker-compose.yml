@@ -1,0 +1,12 @@
+version: '3.4'
+
+services:
+  digitization:
+    image: ${DOCKER_REGISTRY-}digitization
+    build:
+      context: .
+      dockerfile: Dockerfile
+networks:
+  default:
+    external:
+      name: teurem
